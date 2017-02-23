@@ -390,10 +390,11 @@ Host {server}
         while not test_ssh(floating_ip, user, ssh_key_path):
             LOG.debug("waiting for SSH connectivity...")
             time.sleep(5)
-    for ip in servers.itervalues():
-        while not test_ssh(str(ip), user, ssh_key_path):
-            LOG.debug("waiting for {} SSH connectivity...".format(ip))
-            time.sleep(5)
+    else:        
+        for ip in servers.itervalues():
+            while not test_ssh(str(ip), user, ssh_key_path):
+                LOG.debug("waiting for {} SSH connectivity...".format(ip))
+                time.sleep(5)
 
 
 def _vagrant_copy_yml(environment):
